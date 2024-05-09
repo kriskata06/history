@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+        }
+
+        .slides {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('Images/backG.jpg');
+            /* Adjust background properties as needed */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+
+        .slide {
+            display: none;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            opacity: 0;
+            /* Initially hide the slide */
+            transition: opacity 0.5s ease;
+            /* Smooth transition for opacity change */
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            /* Fade in the slide */
+        }
+
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide h1 {
+            font-size: 3rem;
+            margin-bottom: 200px;
+        }
+
+        .slide p {
+            font-size: 1.7rem;
+            margin-bottom: 60px;
+        }
+
+        .slide img {
+            max-width: 100%;
+            /* Ensures the image doesn't exceed the width of its container */
+            max-height: 100%;
+            /* Ensures the image doesn't exceed the height of its container */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slides">
+        <div class="slide active">
+            <h1>Фанариотите 17 - 19в</h1>
+            <img src="Images/Ф.jpg" alt="Image 1" style="">
+            <p>Изглед от Фенер, около 1900 г.</p>
+            <p>Фанариоти на български е дума с две значения: (1) знатни гръкоезични християни в османската столица и (2)
+                служители на гръцката Цариградска патриаршия, особено по време на църковно-народната борба.<br> Името
+                произлиза от това на цариградския квартал Фенер (на гръцки „Фанари“), където след 1601 г. се намира
+                седалището на Вселенските патриарси и където живеят повечето богати православни християни в града.</p>
+        </div>
+        <div class="slide">
+            <h1>Произход</h1>
+            <img src="Images/turg.jpg" alt="Image 2">
+            <p>През XVII век няколко цариградски християнски семейства забогатяват от придворни доставки, откупуване на
+                данъци и лихварство. Те получават достъп до султанския двор като лекари или преводачи и<br> печелят влияние
+                (най-вече чрез отпусканите от тях заеми) в избора на патриарх и митрополити. Макар че се обявяват за
+                потомци на старинни византийски родове,<br> такива фамилии без изключение са пришелци в столицата. Някои са
+                от гръцки, други – от албански, български, румънски или италиански</p>
+        </div>
+        <div class="slide">
+            <h1>Slide 3</h1>
+            <img src="image3.jpg" alt="Image 3">
+            <p>This is the third slide. You can add different content for each slide.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides[currentSlide].classList.remove('active');
+                slides[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            // Show first slide initially
+            showSlide(currentSlide);
+
+            // Handle arrow key navigation
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'ArrowRight') {
+                    showSlide((currentSlide + 1) % slides.length);
+                } else if (event.key === 'ArrowLeft') {
+                    showSlide((currentSlide - 1 + slides.length) % slides.length);
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
