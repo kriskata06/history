@@ -14,6 +14,7 @@
             height: 100%;
             font-family: Arial, sans-serif;
             background-color: #f3f3f3;
+            overflow: auto;
         }
 
         .slides {
@@ -24,7 +25,6 @@
             align-items: center;
             text-align: center;
             background-image: url('Images/backG.jpg');
-            /* Adjust background properties as needed */
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -37,9 +37,7 @@
             width: 100%;
             padding: 20px;
             opacity: 0;
-            /* Initially hide the slide */
             transition: opacity 0.5s ease;
-            /* Smooth transition for opacity change */
         }
 
         .slide.active {
@@ -48,7 +46,6 @@
             justify-content: center;
             align-items: center;
             opacity: 1;
-            /* Fade in the slide */
         }
 
 
@@ -67,6 +64,7 @@
         .slide p {
             font-size: 1.7rem;
             margin-bottom: 60px;
+            margin: 20px;
         }
 
         .slide img {
@@ -81,6 +79,10 @@
 <body>
     <div class="slides">
         <div class="slide active">
+            <h1>Този Уебсайт е изготвен от Кристиян Стойков</h1>
+        </div>
+
+        <div class="slide">
             <h1>Фанариотите 17 - 19в</h1>
             <img src="Images/Ф.jpg" alt="Image 1" style="">
             <p>Изглед от Фенер, около 1900 г.</p>
@@ -93,14 +95,17 @@
             <h1>Произход</h1>
             <img src="Images/turg.jpg" alt="Image 2">
             <p>През XVII век няколко цариградски християнски семейства забогатяват от придворни доставки, откупуване на
-                данъци и лихварство. Те получават достъп до султанския двор като лекари или преводачи и<br> печелят влияние
+                данъци и лихварство. Те получават достъп до султанския двор като лекари или преводачи и<br> печелят
+                влияние
                 (най-вече чрез отпусканите от тях заеми) в избора на патриарх и митрополити. Макар че се обявяват за
-                потомци на старинни византийски родове,<br> такива фамилии без изключение са пришелци в столицата. Някои са
+                потомци на старинни византийски родове,<br> такива фамилии без изключение са пришелци в столицата. Някои
+                са
                 от гръцки, други – от албански, български, румънски или италиански</p>
         </div>
         <div class="slide">
             <h1>Slide 3</h1>
-            <img src="image3.jpg" alt="Image 3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Modern_Colossus_of_Rail_Roads_-_Keppler_1879.jpg/220px-Modern_Colossus_of_Rail_Roads_-_Keppler_1879.jpg"
+                alt="Image 3">
             <p>This is the third slide. You can add different content for each slide.</p>
         </div>
     </div>
