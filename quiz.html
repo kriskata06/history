@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Quiz</title>
+    <link rel="icon" href="Images/logo.png" type="image/icon type">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            overflow: auto;
+        }
+
+        .slides {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('Images/backG.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+
+        .slide {
+            display: none;
+            height: 100%;
+            width: 100%;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+        }
+
+        .question {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .option {
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            border: 2px solid #333;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .correct {
+            background-color: green;
+            color: white;
+        }
+
+        .wrong {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slides">
+        <div class="slide active">
+            <div class="question">1. Какъв е произходът на термина "Фанариоти"?</div>
+            <div class="options">
+                <div class="option">A. От гръцката дума за "просвещение"</div>
+                <div class="option">B. Име на квартал в Константинопол (Стамбул)</div>
+                <div class="option">C. Произлиза от древна византийска династия</div>
+                <div class="option">D. Свързан с известен гръцки философ</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="question">2. Какъв беше основният източник на богатство за Фанариотите през 17-ти век?</div>
+            <div class="options">
+                <div class="option">A. Търговия с Западна Европа</div>
+                <div class="option">B. Селскостопански имоти</div>
+                <div class="option">C. Длъжности в двора и събиране на данъци</div>
+                <div class="option">D. Добив на минерали и ресурси</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="question">3. Как Фанариотите упражняваха влияние в дипломатическите отношения между Османската империя и европейските сили?</div>
+            <div class="options">
+                <div class="option">A. Чрез военни съюзи</div>
+                <div class="option">B. Контролирайки големите търговски пътища</div>
+                <div class="option">C. Служейки като преводачи и дипломати</div>
+                <div class="option">D. Чрез религиозни конверсии</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <div class="question">4. Кое събитие доведе до спада на властта на Фанариотите в румънските княжества?</div>
+            <div class="options">
+                <div class="option">A. Руско-османската война</div>
+                <div class="option">B. Гръцкото национално въстание</div>
+                <div class="option">C. Австро-турска война</div>
+                <div class="option">D. Френската революция</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h1>БЛАГОДАРЯ ЗА ВНИМАНИЕТО!</h1>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slide');
+            const correctOptions = [
+                [1], 
+                [2],
+                [2],
+                [1] 
+            ];
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides[currentSlide].classList.remove('active');
+                slides[index].classList.add('active');
+                currentSlide = index;
+                resetOptions(currentSlide);
+            }
+
+            function resetOptions(slideIndex) {
+                const options = slides[slideIndex].querySelectorAll('.option');
+                options.forEach(opt => {
+                    opt.classList.remove('correct', 'wrong');
+                    opt.addEventListener('click', handleClick);
+                });
+            }
+
+            function handleClick(event) {
+                const clickedOptionIndex = Array.from(event.target.parentNode.children).indexOf(event.target);
+                const correctOptionIndexes = correctOptions[currentSlide];
+                const options = slides[currentSlide].querySelectorAll('.option');
+                options.forEach(function (opt, index) {
+                    if (index === correctOptionIndexes[0]) {
+                        opt.classList.add('correct');
+                    } else {
+                        opt.classList.add('wrong');
+                    }
+                });
+                options.forEach(opt => opt.removeEventListener('click', handleClick));
+            }
+
+            // Show first slide initially
+            showSlide(currentSlide);
+
+            // Handle arrow key navigation
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'ArrowRight') {
+                    showSlide((currentSlide + 1) % slides.length);
+                } else if (event.key === 'ArrowLeft') {
+                    showSlide((currentSlide - 1 + slides.length) % slides.length);
+                }
+            });
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
